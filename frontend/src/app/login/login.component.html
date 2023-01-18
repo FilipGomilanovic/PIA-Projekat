@@ -1,0 +1,25 @@
+<table>
+    <tr>
+        <td>Username: </td>
+        <td>
+            <input type="text" name="username" [(ngModel)]="username">
+        </td>
+    </tr>
+    <tr>
+        <td>Password: </td>
+        <td>
+            <input type="password" name="password" [(ngModel)]="password">
+        </td>
+    </tr>
+    <tr>
+        <input type="radio" name ="type" value="participiant" [(ngModel)]="type"><i>Participiant</i>
+        <input type="radio" name ="type" value="organizer" [(ngModel)]="type"><i>Organizer</i>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button (click)="login()">Login</button>
+        </td>
+    </tr>
+    <a routerLink='/register'>Register here.</a>
+    <span class="errorClass">{{errorMessage}}</span>
+</table>
