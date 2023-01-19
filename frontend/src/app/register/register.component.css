@@ -1,0 +1,16 @@
+
+input, label {
+    margin: 5px 5px;
+}
+
+.box{
+  text-align:center;
+  border-style: solid;
+  padding-bottom: 5px;
+}
+
+.errorClass {
+  color: #d93025;
+  font-size: 12px;
+  line-height: normal;
+}

@@ -1,1 +1,45 @@
-<p>register works!</p>
+<div class = "box">
+
+    <h4 style="text-align: center">Register</h4>
+
+    <label for="organizer"><i>Organizer:</i></label>
+    <input type="checkbox" name="organizer" value="organizer" [(ngModel)]="organizer"><br>
+
+    <input (focusout)="testFirstname()" type="text" name="firstname" [(ngModel)]="firstname" placeholder="Firstname"><br>  
+    <span *ngIf="firstnameCheck" class="errorClass">{{firstnameCheck}}</span><br *ngIf="firstnameCheck">
+
+    <input (focusout)="testLastname()" type="text" name="lastname" [(ngModel)]="lastname" placeholder="Lastname"><br>
+    <span *ngIf="lastnameCheck" class="errorClass">{{lastnameCheck}}</span><br *ngIf="lastnameCheck">
+    
+    <input (focusout)="testUsername()" type="text" name="username" [(ngModel)]="username" placeholder="Username"> <br>
+    <span *ngIf="usernameCheck" class="errorClass">{{usernameCheck}}</span><br *ngIf="usernameCheck">
+
+    <input (focusout)="testPassword()" type="text" name="password1" [(ngModel)]="password1" placeholder="Password"><br>
+    <input (focusout)="testPassword()" type="text" name="password2" [(ngModel)]="password2" placeholder="Confirm"><br>
+    <span *ngIf="passwordCheck" class="errorClass">{{passwordCheck}}</span><br *ngIf="passwordCheck">
+
+    <input (focusout)="testPhone()" type="text" name="phone" [(ngModel)]="phone" placeholder="Phone"><br>  
+    <span *ngIf="phoneCheck" class="errorClass">{{phoneCheck}}</span><br *ngIf="phoneCheck">
+
+    <input (focusout)="testEmail()" type="text" name="email" [(ngModel)]="email"  placeholder="Email"><br>
+    <span *ngIf="emailCheck" class="errorClass">{{emailCheck}}</span><br *ngIf="emailCheck">
+
+    <span class="errorClass">{{message}}</span><br *ngIf="message"><br>
+    <div *ngIf="organizer" style="text-align: center">
+
+        <i>Ogranization:</i><br>
+        <input type="text" id="o_name" placeholder="Ogranization name" [(ngModel)]="o_name"><br> 
+        <input type="text" id="o_id" placeholder="Ogranization ID"  [(ngModel)]="o_id"><br>
+
+        <i>Address:</i><br>
+        <input type="text" id="street" placeholder="Street" size="30" [(ngModel)]="street"><br>
+        <input type="text" id="country" placeholder="Country" size="8" [(ngModel)]="country">
+        <input type="text" id="city" placeholder="City" size="8" [(ngModel)]="city">
+        <input type="text" id="zip" placeholder="Zip" size="2" [(ngModel)]="zip"><br><br>
+
+    </div>
+    
+    <button (click)="register()">Register</button>
+</div>
+
+
