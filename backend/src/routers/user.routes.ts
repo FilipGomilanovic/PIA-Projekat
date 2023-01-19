@@ -11,4 +11,8 @@ userRouter.route('/loginAdmin').post(
     (req, res)=>new UserController().loginAdmin(req,res)
 )
 
+userRouter.route('/register').post(
+    (req, res)=>new UserController().register(req,res)
+)
+
 export default userRouter;
