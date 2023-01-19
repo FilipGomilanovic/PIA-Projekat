@@ -23,14 +23,8 @@ let User = new Schema({
     email: {
         type: String
     },
-    organization_name: {
-        type: String
-    },
-    address_of_the_headquarters_of_the_organization: {
+    organization: {
         type: Object
-    },
-    registration_number_of_the_organization: {
-        type: String
     }
 });
 
