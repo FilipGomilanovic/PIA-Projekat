@@ -1,1 +1,10 @@
-<p>login-admin works!</p>
+<div class = "box">
+
+    <h4 style="text-align: center">Admin login</h4>
+   
+    <input type="text" name="username" [(ngModel)]="username" placeholder="Username"><br>
+    <input type="text" name="password" [(ngModel)]="password" placeholder="Password"><br>
+    <span class="errorClass">{{errorMessage}}</span><br>
+    <button (click)="login()">Login</button><br>
+    
+</div>
