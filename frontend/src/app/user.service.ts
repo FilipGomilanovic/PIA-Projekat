@@ -24,4 +24,22 @@ export class UserService {
     }
     return this.http.post('http://localhost:4000/users/loginAdmin', data);
   }
+
+  register(firstname, lastname, username, password, type, o_name, o_id , street, country, city, zip) {
+    const data = {
+      firstname: firstname,
+      lastname: lastname,
+      username: username,
+      password: password,
+      type: type,
+      o_name: o_name,
+      o_id: o_id,
+      street: street,
+      country: country,
+      city: city,
+      zip: zip
+    }
+    return this.http.post('http://localhost:4000/users/register', data);
+  }
+
 }
