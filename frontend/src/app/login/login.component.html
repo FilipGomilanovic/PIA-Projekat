@@ -1,25 +1,19 @@
-<table>
-    <tr>
-        <td>Username: </td>
-        <td>
-            <input type="text" name="username" [(ngModel)]="username">
-        </td>
-    </tr>
-    <tr>
-        <td>Password: </td>
-        <td>
-            <input type="password" name="password" [(ngModel)]="password">
-        </td>
-    </tr>
-    <tr>
-        <input type="radio" name ="type" value="participiant" [(ngModel)]="type"><i>Participiant</i>
-        <input type="radio" name ="type" value="organizer" [(ngModel)]="type"><i>Organizer</i>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <button (click)="login()">Login</button>
-        </td>
-    </tr>
-    <a routerLink='/register'>Register here.</a>
-    <span class="errorClass">{{errorMessage}}</span>
-</table>
+<div class = "box">
+
+    <h4 style="text-align: center">Login</h4>
+   
+    <input type="text" name="username" [(ngModel)]="username" placeholder="Username"><br>
+    <input type="text" name="password" [(ngModel)]="password" placeholder="Password"><br>
+    <select name="type" [(ngModel)]='type'>
+        <option value="participant"><i>Participant</i></option>
+        <option value="organizer"><i>Organizer</i></option>
+    </select><br>
+    <span class="errorClass">{{errorMessage}}</span><br>
+    <button (click)="login()">Login</button><br>
+
+    <span>
+        Don't have an account? Register
+        <a routerLink='/register'> here.</a>
+    </span>
+    
+</div>

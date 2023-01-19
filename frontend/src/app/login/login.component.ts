@@ -17,28 +17,28 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.userService.login(this.username, this.password, this.type).subscribe((user: User)=>{
-      if (!this.username || !this.password || !this.type){
-        this.errorMessage = "All fileds required!"
+      if (!this.username || !this.password){
+        this.errorMessage = "***All fields required***"
       } else {
         if (user){
-          if (user.type == "participiant") {
-            
+          if (user.type == "participant") {
             this.router.navigate(['/participiant'])
             sessionStorage.setItem('logged',JSON.stringify(user));
           }
           else {
             this.router.navigate(['/organizer'])
+            sessionStorage.setItem('logged',JSON.stringify(user));
           }
         }
         else {
-          this.errorMessage = "Wrong data!"
+          this.errorMessage = "***Wrong data***"
         }
       }
     })
   }
   username = '';
   password = '';
-  type = '';
+  type = 'participant'
   errorMessage = '';
 
 }
