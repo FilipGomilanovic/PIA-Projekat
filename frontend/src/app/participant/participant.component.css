@@ -1,0 +1,11 @@
+.box{
+    min-height: 100vh;
+    text-align:center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: -25px;
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    font-size: 12px;
+    font-weight: bold;
+  }

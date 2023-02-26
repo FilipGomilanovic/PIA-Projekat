@@ -6,7 +6,9 @@ export class User{
     phone: string;
     type: string;
     email: string;
-    organization_name: string;
-    address_of_the_headquarters_of_the_organization: string;
-    registration_number_of_the_organization: string;
+    image: string;
+    status: string;
+    organization: object;
+    verification_number: number;
+    change_password_request_time: Date;
 }

@@ -1,0 +1,123 @@
+.card img{
+    width: 100%;
+    height: 60vh;
+    max-height: 60vh;
+  }
+  
+  /* .cardBody{
+    width: auto;
+    height: 20vh;
+    max-height: 20vh;
+  } */
+
+  .carousel-control-next, .carousel-control-prev, .carousel-indicators {
+    filter: invert(100%);
+}
+
+.mapButton {
+    background: none;
+    border: none;
+    font-family: arial, sans-serif;
+    color: #069;
+    cursor: pointer;
+  }
+
+.deleteButton {
+  background: none;
+    border: none;
+    font-family: arial, sans-serif;
+    color: rgb(179, 26, 26);
+    cursor: pointer;
+}
+
+  #map {
+    height:auto;
+    max-height: 400px;
+  }
+
+  .editButton{
+    background: none;
+    border: none;
+}
+
+
+.likesComents:link {
+    color: red;
+    text-decoration: none;
+  }
+  
+  /* visited link */
+  .likesComents:visited {
+    color: black;
+  }
+  
+  /* mouse over link */
+  .likesComents:hover {
+    color: blue;
+  }
+  
+  /* selected link */
+  .likesComents:active {
+    color: blue;
+  }
+
+.comments{
+  border-radius: 25px;
+  /* border: 2px solid black; */
+  padding: 20px;
+  /* width: 200px;
+  height: 150px; */
+}
+
+.comment{
+  border-radius: 25px;
+  /* border: 2px solid; */
+  background-color: whitesmoke;
+  padding: 20px;
+}
+
+.commentP {
+  margin:20px 0;
+  position:relative;
+  display:inline-block;
+}
+
+input{
+  padding: 10px;
+  width: 100%;
+  height: 80px;
+}
+
+.buttonLikesComments{
+  background: none;
+  border: none;
+  font-family: arial, sans-serif;
+  color: none;
+  cursor: pointer;
+}
+.buttonLikesComments:hover{
+  color: blue;
+}
+
+/* label {
+  padding:10px;
+  pointer-events: none;
+  position:absolute;
+  left:0;
+  top:0;
+  transition: 0.2s;
+  transition-timing-function: ease;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity:0.5;
+  background: #fff;
+}
+
+input {
+  padding:10px;
+}
+
+input:focus + label, input:not(:placeholder-shown) + label {
+  opacity:1;
+  transform: scale(0.75) translateY(-70%) translateX(-14px);
+} */
+

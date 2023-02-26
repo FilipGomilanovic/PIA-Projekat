@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FileUploadService } from '../file-upload.service';
+import { User } from '../models/user';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
   }
@@ -35,11 +37,24 @@ export class RegisterComponent implements OnInit {
   passwordCheck: string;
   phoneCheck: string;
   emailCheck: string;
+  url: string|null|ArrayBuffer = null 
+
+  onFileSelected(files: FileList | null) {
+    if (files) {
+        var reader = new FileReader()
+        reader.readAsDataURL(files[0])
+        //reader.readAsBinaryString(files[0])
+        reader.onload = (event:Event) => {
+          let fileReader = event.target as FileReader
+          this.url = fileReader.result;
+        }
+    }
+  }
 
 testPhone(){
  if (this.phone) {
   if (!(/^(\+381|0)[0-9]{9,12}$/).test(this.phone)) {
-    this.phoneCheck = "***Invalid format***" 
+    this.phoneCheck = "Invalid format" 
   } else {
     this.phoneCheck = null
   }
@@ -52,7 +67,7 @@ testPhone(){
 testEmail(){
   if (this.email) {
     if (!(/^[a-zA-Z]\w*@[a-z]+\.[a-z]{2,3}$/).test(this.email)) {
-      this.emailCheck = "***Invalid format***"
+      this.emailCheck = "Invalid format"
     } else {
       this.emailCheck = null
     }
@@ -69,9 +84,9 @@ testPassword(){
   // bar jedan specijalni karakter(@$!%*?&_)
   if (this.password1 && this.password2) {
     if (this.password1 != this.password2) {
-      this.passwordCheck = "***Passwords does not match***"
+      this.passwordCheck = "Passwords does not match"
     } else if (!(/(?=.*[A-Z])^[a-zA-Z](?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{7,15}$/).test(this.password2)){
-      this.passwordCheck = "***Invalid format***"
+      this.passwordCheck = "Invalid format"
     } else {
       this.passwordCheck = null;
     }
@@ -84,7 +99,7 @@ testPassword(){
 testUsername(){
   //Najmanje 3 karaktera, prvi karakter mora biti slovo
   if(!(/^[a-zA-Z]\w{2}/).test(this.username)) {
-    this.usernameCheck= "***Invalid format***"
+    this.usernameCheck= "Invalid format"
   } else {
     this.usernameCheck=null
   }
@@ -93,7 +108,7 @@ testUsername(){
 testLastname(){
   //Najmanje 3 karaktera, prvi karakter mora biti slovo
   if(!(/^[a-zA-Z]\w{2}/).test(this.lastname)) {
-    this.lastnameCheck= "***Invalid format***"
+    this.lastnameCheck= "Invalid format"
   } else {
     this.lastnameCheck=null
   }
@@ -102,34 +117,48 @@ testLastname(){
 testFirstname(){
   //Najmanje 3 karaktera, prvi karakter mora biti slovo
   if(!(/^[a-zA-Z]\w{2}/).test(this.firstname)) {
-    this.firstnameCheck= "***Invalid format***" 
+    this.firstnameCheck= "Invalid format" 
   } else {
     this.firstnameCheck=null
   } 
 }
 
-  register(){
-    if (!this.firstname || !this.lastname || !this.username || !this.password1 || !this.password2 || !this.phone || !this.email) {
-      this.message="***All fields required***"
-    } else if (this.firstnameCheck || this.lastnameCheck || this.emailCheck || this.passwordCheck || this.phoneCheck){
-      this.message="***All fields must be in vaild format***"
-    } else {
-      this.message=null
-      if (this.organizer) {
-        this.type="organizer"
+register(){
+  if (!this.firstname || !this.lastname || !this.username || !this.password1 || !this.password2 || !this.phone || !this.email) {
+    this.message="All fields required"
+  } else if (this.firstnameCheck || this.lastnameCheck || this.emailCheck || this.passwordCheck || this.phoneCheck){
+    this.message="All fields must be in vaild format"
+  } else {
+    let exist = false;
+    this.userService.getAllUsers().subscribe((users: User[])=>{
+      users.forEach(user =>{
+        if (user.username == this.username){
+          alert(user.username)
+          exist = true;
+        }
+      })
+      if (!exist) {
+        this.message=null
+        if (this.organizer) {
+          this.type="organizer"
+        }
+        else {
+          this.type="participant"
+        }    
+        this.userService.register(this.firstname, this.lastname, this.username, this.password1, this.email, this.phone, this.type, this.url, this.o_name, this.o_id, this.street,this.country, this.city, this.zip).subscribe(respObj=>{
+          if(respObj['message']=='ok'){
+            this.message = 'User added'
+          }
+          else{
+            this.message = 'Error'
+          }
+          }); 
       }
       else {
-        this.type="participant"
-      }    
-      this.userService.register(this.firstname, this.lastname, this.username, this.password1, this.type, this.o_name,
-                                         this.o_id, this.street,this.country, this.city,this.zip).subscribe(respObj=>{
-        if(respObj['message']=='ok'){
-          this.message = 'User added'
-        }
-        else{
-          this.message = 'Error'
-        }
-        }); 
-    }
+        this.usernameCheck="Username already exist"
+      }
+    })
+    
   }
+}
 }

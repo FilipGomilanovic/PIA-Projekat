@@ -1,2 +1,143 @@
-<h1>ART WORKSHOP</h1>
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position:fixed; width: 100%; z-index:99">
+    <div class="container-fluid">
+        <a *ngIf="!logged; else loggedUserHome" class="navbar-brand" href="/">
+            <img class="logo" src="../assets/Images/art_white2.png" alt="Logo">
+        </a>
+        <ng-template #loggedUserHome>
+            <a *ngIf="logged.type=='participant'" class="navbar-brand" href="/participant">
+                <img class="logo" src="../assets/Images/art_white2.png" alt="Logo">
+            </a>
+            <a *ngIf="logged.type=='organizer'" class="navbar-brand" href="/organizer">
+                <img class="logo" src="../assets/Images/art_white2.png" alt="Logo">
+            </a>
+            <a *ngIf="logged.type=='administrator'" class="navbar-brand" href="/administrator">
+                <img class="logo" src="../assets/Images/art_white2.png" alt="Logo">
+            </a>
+        </ng-template>
+        
+        <span *ngIf="logged"><i style="color:#FFFFFFBF">{{logged.username}} </i><img class="image" [src]="logged.image" alt="image"></span>
+        
+        <ul class="navbar-nav">
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i style="font-size:8px">Home </i><i class="fa fa-home" aria-hidden="true"></i>
+                </a>
+            </li> -->
+            <li *ngIf="!logged" class="nav-item">
+                <a class="nav-link" href="/login">
+                    <i style="font-size:8px">Sign in </i><i class="fa fa-sign-in" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li *ngIf="!logged" class="nav-item">
+                <a class="nav-link" href="/register">
+                    <i style="font-size:8px">Register </i><i class="fa fa-user-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            <!-- <img class="image" [src]="logged.image" alt="image"><i></i> -->
+             <li *ngIf="logged && logged.type!='administrator'" class="nav-item">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
+                        <i style="font-size:8px; color:#FFFFFF8C">{{logged.first_name}} {{logged.last_name}} </i> 
+                    </button>
+                    <ul class="dropdown-menu bg-dark text-center" style="min-width: 100%">
+                        <!-- <li>
+                            <div class="dropdown-item bg-dark div1">
+                                <a href="#"><i style="font-size:8px"></i><i class="fa fa-user" aria-hidden="true"></i></a>
+                                &nbsp; &nbsp; &nbsp;
+                                <a href="#"><i style="font-size:8px"></i><i class="fa fa-gear" aria-hidden="true"></i></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item bg-dark div2" >
+                                <a href="#"><i style="font-size:8px"></i><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                                &nbsp; &nbsp; &nbsp;
+                                <a href="#"><i style="font-size:8px"></i><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                            </div>
+                        </li> -->
+                        <li>
+                            <a class="nav-link" href="/profile">
+                                <i style="font-size:8px">Profile </i><i class="fa fa-user" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/register">
+                                <i style="font-size:8px">Messages </i><i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/" (click)="logOut()">
+                                <i style="font-size:8px">Sign out </i><i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li *ngIf="logged && logged.type=='administrator'" class="nav-item">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
+                        <i style="font-size:8px; color:#FFFFFF8C">{{logged.type}} </i> 
+                    </button>
+                    <ul class="dropdown-menu bg-dark text-center" style="min-width: 100%">
+                        <!-- <li>
+                            <div class="dropdown-item bg-dark div1">
+                                <a href="#"><i style="font-size:8px"></i><i class="fa fa-user" aria-hidden="true"></i></a>
+                                &nbsp; &nbsp; &nbsp;
+                                <a href="#"><i style="font-size:8px"></i><i class="fa fa-gear" aria-hidden="true"></i></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item bg-dark div2" >
+                                <a href="#"><i style="font-size:8px"></i><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                                &nbsp; &nbsp; &nbsp;
+                                <a href="#"><i style="font-size:8px"></i><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                            </div>
+                        </li> -->
+                        <li>
+                            <a class="nav-link" href="/organizer">
+                                <i style="font-size:8px">Add new workshop</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/">
+                                <i style="font-size:8px">View all workshops </i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/register">
+                                <i style="font-size:8px">Messages </i><i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/" (click)="logOut()">
+                                <i style="font-size:8px">Sign out </i><i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+<div style="margin-top: 50px;">
+  <router-outlet></router-outlet>
+</div>
+
+
+<!-- <app-file-upload></app-file-upload> -->
+<footer style="text-align:center; width:100%;" class="bg-dark test">
+    <div class="container footer">
+        <img class="logo2" src="../assets/Images/art_white2.png" alt="Logo"><br>
+        <span style="color:white">Art workshop © 2023 | All rights reserved </span>
+        <br>
+        <span>
+            The art workshop is a project from the Internet application programming
+        </span><br>
+        <span>
+            course at the Faculty of Electrical Engineering
+        </span>
+        <br><br><br>
+    </div>
+</footer>
+</div>

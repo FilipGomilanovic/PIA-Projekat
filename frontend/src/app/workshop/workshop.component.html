@@ -1,0 +1,253 @@
+<div class="conteiner " style="min-height:100vh; background-color: #F5F5F5" >
+
+    
+      <div class="row">
+        
+          
+          <div class="col-2"></div>
+          <div  class="col-8 mt-3 ">
+              
+              <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-8 text-center mt-5">
+                   
+                    <div class="card text-center">
+                        <div  *ngIf="workshop.images.length != 0" id="carouselExampleIndicators" class="carousel slide text-center" data-bs-ride="true">
+
+                            <div class="carousel-indicators ">
+                              <button *ngFor="let image of workshop.images; let i = index" type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}"></button>                        
+                            </div>
+                            <div class="carousel-inner " >
+                          
+                              <div class="carousel-item" *ngFor="let image of workshop.images; let i = index" [ngClass]="{'active': i === 0}">
+                                <img src="../../assets/Images/workshop/{{image}}" class="card-img-top" alt="...">
+                              </div>
+                            
+                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span  class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                              </button>
+                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                              </button>
+                            </div>
+                            <br>
+                            <br>
+                            
+                        </div>
+                        <!-- <img src="../../assets/Images/workshop/{{workshopsTop5[2].images[0]}}" class="card-img-top" alt="..."> -->
+                        <div class="card-body ">
+                            <table style="margin:auto">
+                              <tr *ngIf="!editTitle">
+                                <td><h5  class="card-title">{{title}}</h5></td>
+                                <td><button (click)="changeFlag(1)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                              </tr>
+                              <tr *ngIf="editTitle">
+                                <input style="text-align: center;" type="text" [(ngModel)]="title" [placeholder] =title>  
+                                <td><button (click)="changeFlag(1)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                              </tr>
+                            </table>                 
+                          <!-- <p class="card-text cardBody"> -->
+                            <table style="margin:auto">
+                              <tr *ngIf="!editShortDescription">
+                                <td> {{shortDescription}}</td>
+                                <td><button (click)="changeFlag(3)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                              </tr>
+                              <tr *ngIf="editShortDescription">
+                                <input style="text-align: center;" type="text" [(ngModel)]="shortDescription" [placeholder] =shortDescription>  
+                                <td><button (click)="changeFlag(3)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                              </tr>
+                            </table>
+                            <table style="margin:auto">
+                              <tr *ngIf="!editDate">
+                                <td> {{date}}</td>
+                                <td><button (click)="changeFlag(2)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                              </tr>
+                              <tr *ngIf="editDate">
+                                <input style="text-align: center;" type="text" [(ngModel)]="date" [placeholder] =date>  
+                                <td><button (click)="changeFlag(2)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                              </tr>
+                            </table>
+
+                            <table style="margin:auto;">
+                              <tr *ngIf="!editAddress">
+                                <td> {{street}}, {{city}}, {{country}}</td>
+                                <td><button (click)="changeFlag(5)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                              </tr>
+                            </table>
+                            <table style="margin:auto; width: 90%;">
+                              <tr *ngIf="!editAddress">
+                                <td colspan="2"> <div id="map">
+                                
+                                </div>
+                              </td>  
+                            </table>
+                            <table style="margin:auto; width: 90%;">
+                              
+                              <tr *ngIf="!editAddress">
+                                <td colspan="2">
+                                  <button *ngIf="!mapp" style="font-size:12px;" class="mapButton" (click)="showMap()">See on map <i class="fa fa-map-marker"></i></button>
+                              </td>
+                              </tr>
+                              <tr *ngIf="!editAddress">
+                                <td colspan="2">
+                                  <button *ngIf="mapp" style="font-size:12px;" class="mapButton" (click)="closeMap()">Close map <i class="fa fa-window-close"></i></button>
+                              </td>
+                              </tr>
+                              </table>
+                              <table  style="margin:auto; ">
+                              <tr *ngIf="editAddress">
+                                <td> {{street}}, {{city}}, {{country}}</td>
+                                <td><button (click)="changeFlag(5)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                              </tr>
+                              </table>
+                              <br *ngIf="editAddress">
+                              <div *ngIf="editAddress" class="row">
+                              
+                                <div class="col-4"></div>
+                                <div class="col-4"><input style="margin:auto; width: auto; height: auto;"  type="search" class="form-control rounded"  placeholder="Search..." id="search" aria-label="Search" aria-describedby="search-addon" /></div>
+                                <div class="col-4"></div>
+                              </div>
+                              <br *ngIf="editAddress">
+                            <div id="map2"></div>
+                            <br>
+
+                            <a href="#" class="card-text"><span class="fa fa-id-card" >	{{workshop.organizer}}</span></a><br>
+                           
+                            
+                            <!-- </p>   -->
+                            
+                             <div id="map">
+                                
+                             </div>
+                            
+                        
+                            <br>
+                            <p *ngIf="!editDescription" class="card-text">
+                                {{description}}
+                            </p>
+                            <input *ngIf="editDescription" style="text-align: center;" type="text" [(ngModel)]="description" [placeholder] =description>  
+                            <button (click)="changeFlag(4)" class="editButton"><i class="fa fa-edit"></i></button>
+                           
+                            <!-- <a href="#" class="btn btn-link">details</a> -->
+                            <br>
+                            <button (click)="saveChanges()" *ngIf="changedSomething" class="btn btn-dark">Save changes <i class="fa fa-edit"></i></button>
+                            <button *ngIf="!changedSomething" disabled class="btn btn-dark">Save changes <i class="fa fa-edit"></i></button>
+                        </div>
+                        <hr>
+                        <!-- <div class="card-body" style="margin-top:-20px;margin-bottom:-20px">
+                            <a class="likesComents" href="#">
+                                <span  style="color:red" class="fa fa-heart-o"></span>
+                                &nbsp;{{workshop.numberOfLikes}}
+                            </a>
+                          &nbsp;&nbsp;&nbsp;
+                          <a class="likesComents" href="#"> 
+                            <span style="color:blue" class="fa fa-comment-o"></span>
+                            &nbsp;{{workshop.comments.length}}
+                          </a> -->
+                          <div>
+                            <button *ngIf="!checkParticipant() && workshop.capacity > workshop.participants.length" (click)="addParticipant()" class="btn btn-success">Participate</button>
+                            <button *ngIf="!checkParticipant() && workshop.capacity == workshop.participants.length" (click)="addParticipant()" class="btn btn-success"> Notify me when places become available</button>
+                            <br *ngIf="!checkParticipant()"><br *ngIf="!checkParticipant()">
+                            <button *ngIf="checkParticipant() && checkDate()" (click)="removeParticipant()" class="btn btn-danger">Cancel arrival</button>
+                            <br *ngIf="checkParticipant() && checkDate()"><br *ngIf="checkParticipant() && checkDate()">
+                            <div *ngIf="waiting" class="spinner-border text-danger" role="status">
+                              <span class="sr-only">Loading...</span>
+                            </div>
+                          </div>
+                          <div class="col-12 text-center">
+                            <div *ngIf="showAlert" class="row">
+                              <div class="col-3"></div>
+                              <div class="col-6">
+                                <div class="alert alert-warning alert-dismissible">
+                                  <button (click)="closeAlert()" type="button" class="btn-close" aria-label="close"></button>
+                                  There are currently no available places. When places become available, we will inform you.
+                                </div>
+                              </div>
+                              <div class="col-3"></div>
+                            </div>
+                          <div class="card-body" style="margin-top:-20px;">
+                            <button (click)="like()" class="buttonLikesComments">
+                            <span *ngIf="!liked" style="color:red" class="fa fa-heart-o"></span>
+                            <span *ngIf="liked" style="color:red" class="fa fa-heart"></span>
+                            &nbsp;{{workshop.numberOfLikes}}</button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button *ngIf="!showComm" (click)="showComments()" class="buttonLikesComments" >
+                            <span style="color:blue" class="fa fa-comment-o"></span>
+                            &nbsp;{{workshop.comments.length}}</button>
+                            <button *ngIf="showComm" (click)="hideComments()" class="buttonLikesComments" >
+                              <span style="color:blue" class="fa fa-comment"></span>
+                              &nbsp;{{workshop.comments.length}}</button>
+                            <br>
+                          </div>
+                
+                          <div *ngIf="showLikeAlert" class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                              <div class="alert alert-warning alert-dismissible">
+                                <button (click)="closeLikeAlert()" type="button" class="btn-close" aria-label="close"></button>
+                                You can not like this workshop because you did not participate on it before.
+                              </div>
+                            </div>
+                            <div class="col-2"></div>
+                          </div>
+                        
+                        <!-- </div> -->
+                        <br>
+                        <div *ngIf="showComm" class="card-body comments" >
+                          <div *ngFor="let comment of workshop.comments;">
+                              <div class="conteiner">
+                                <div class="row">
+                                  <div class="col-2">
+                                    
+                                    <img [src]=comment.user.image alt="image" style="height:40px; width: 40px; border-radius: 50%;" >
+                                    <span style="font-weight: bold;">&nbsp;{{comment.user.username}}</span>
+                                  </div>
+                                  <div class="col-8" style="text-align:start">
+                                    <i style="font-size: small;" class="fa fa-calendar ">&nbsp;</i><i  style="font-family: Arial, Helvetica, sans-serif; font-size: xx-small;">{{comment.date}}</i>
+                                    
+                                    <p style="font-size:10px; margin-top: -2px" class="comment">
+                                     {{comment.text}}
+                                    </p>
+                                    
+                                  </div>
+                                  <div style="text-align: left;" class="col-2">
+                               
+                                    <br>
+                                    <span *ngIf="logged.username==comment.user.username || logged.type=='administrator' ||workshop.organizer==logged.username"><button (click)="deleteComment(comment._id)" class="deleteButton">Delete  <i class="fa fa-close"></i></button></span>
+                                  </div>
+                                </div>
+                            </div>
+                           
+                         
+                          </div>
+                          <hr>
+                                                 
+                         
+                    
+                          <!-- Comment: <input type="text"> <button class="btn btn-dark">Send</button> -->
+                        </div>
+                        <div class="conteiner">
+                          <div class="row">
+                            <div class="col-2" style="margin-top:5px">
+                              <img [src]="logged.image" alt="image" style="height:40px; width: 40px; border-radius: 50%;">
+                              <strong><span>&nbsp;{{logged.username}}</span></strong>
+                            
+                            </div>
+                            <div class="col-8" style="text-align:center;">
+                              <textarea  name="short" rows="2" style="width:100%; max-width: 50ch" placeholder="New comment" [(ngModel)]="newCommentText"></textarea>
+                            </div>
+                            <div class="col-2" style="text-align: start; margin-top:5px">
+                              <button (click)="comment()" style="width: 80%; height: 80%;" class="btn btn-success fa fa-send" ></button>
+                            </div>
+                          </div>
+                          <br>
+                      </div>
+                     
+                </div>  
+            </div>  
+        
+      </div>
+  </div>
+  

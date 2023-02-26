@@ -1,7 +1,7 @@
 <div class = "box">
 
     <h4 style="text-align: center">Register</h4>
-
+    
     <label for="organizer"><i>Organizer:</i></label>
     <input type="checkbox" name="organizer" value="organizer" [(ngModel)]="organizer"><br>
 
@@ -21,9 +21,17 @@
     <input (focusout)="testPhone()" type="text" name="phone" [(ngModel)]="phone" placeholder="Phone"><br>  
     <span *ngIf="phoneCheck" class="errorClass">{{phoneCheck}}</span><br *ngIf="phoneCheck">
 
-    <input (focusout)="testEmail()" type="text" name="email" [(ngModel)]="email"  placeholder="Email"><br>
-    <span *ngIf="emailCheck" class="errorClass">{{emailCheck}}</span><br *ngIf="emailCheck">
-
+    <input (focusout)="testEmail()" type="text" name="email" [(ngModel)]="email" placeholder="Email"><br>
+    <span *ngIf="emailCheck" class="errorClass">{{emailCheck}}</span><br *ngIf="emailCheck"><br>
+    <div *ngIf="!url">
+        <label style="text-align: center; border-radius: 50%;" for="image">
+            <img src="..\assets\Images\photo_icon.png" height="50px">
+        </label>
+        <br>
+        <input type="file" style="visibility:hidden;" (change)="onFileSelected(imageInput.files)" id="image" value="image" #imageInput>
+        
+    </div>
+    <img [src]="url" height="100px"><br *ngIf="url">
     <span class="errorClass">{{message}}</span><br *ngIf="message"><br>
     <div *ngIf="organizer" style="text-align: center">
 
@@ -36,10 +44,8 @@
         <input type="text" id="country" placeholder="Country" size="8" [(ngModel)]="country">
         <input type="text" id="city" placeholder="City" size="8" [(ngModel)]="city">
         <input type="text" id="zip" placeholder="Zip" size="2" [(ngModel)]="zip"><br><br>
-
+        
     </div>
     
-    <button (click)="register()">Register</button>
-</div>
-
-
+    <button class="btn btn-dark" (click)="register()">Register</button>
+</div><br>

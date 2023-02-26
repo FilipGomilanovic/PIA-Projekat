@@ -1,0 +1,52 @@
+.div1{
+    /* background-color: blue; */
+    /* border: solid;
+    border-color: black; */
+}
+
+.leftEmptyDiv, .rightEmptyDiv{
+    /* background-color: brown; */
+}
+
+.div2{
+    /* background-color: red;   */
+    /* border: solid;
+    border-color: black; */
+}
+
+.editButton{
+    background: none;
+    border: none;
+}
+
+.imageLabel{
+    cursor: pointer;
+}
+
+.passwordChange{
+    height: 50vh;
+    margin-top: 100px;
+    width: 50%;
+    background-color: red;
+    position: absolute;
+    position:fixed;
+    z-index:98;
+}
+
+input, label {
+    margin: 5px 5px;
+}
+
+.errorClass {
+    color: #d93025;
+    font-size: 12px;
+    line-height: normal;
+  }
+
+.buttonLink {
+background: none;
+border: none;
+font-family: arial, sans-serif;
+color: #069;
+cursor: pointer;
+}

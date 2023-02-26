@@ -1,0 +1,33 @@
+.logo{
+    width:80px;
+    margin-top: -40px;
+    margin-bottom: -30px;
+}
+
+.logo2{
+    width:80px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+.image{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+}
+
+.test{
+    color:rgb(152, 144, 144)
+}
+
+li>.dropdown>ul>li>.div1>a{
+    color:#FFFFFF8C;
+    padding-left: 3px;
+}
+li>.dropdown>ul>li>.div2>a{
+    color:#FFFFFF8C;
+    padding-left: 1px;
+}
+li>.dropdown>ul>li>.div1>a:hover,
+li>.dropdown>ul>li>.div2>a:hover{
+    color:#FFFFFFBF;
+}

@@ -23,9 +23,25 @@ let User = new Schema({
     email: {
         type: String
     },
+    image: {
+        type: String
+    },
+    status: {
+        type: String
+    },  
     organization: {
         type: Object
-    }
+    },
+    verification_number: {
+        type: Number
+    },
+    change_password_request_time:{
+        type: Date
+    },
+    attended_workshops: {
+        type: Array<String>
+    },
+
 });
 
 export default mongoose.model('User', User, 'users');

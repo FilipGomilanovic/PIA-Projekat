@@ -9,9 +9,15 @@ import { RegisterComponent } from './register/register.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { ParticipantComponent } from './participant/participant.component';
 import { UnregisteredComponent } from './unregistered/unregistered.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OrganizerComponent } from './organizer/organizer.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AgmCoreModule } from '@agm/core';
+import { WorkshopComponent } from './workshop/workshop.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +28,22 @@ import { OrganizerComponent } from './organizer/organizer.component';
     LoginAdminComponent,
     ParticipantComponent,
     UnregisteredComponent,
-    OrganizerComponent
+    OrganizerComponent,
+    FileUploadComponent,
+    ProfileComponent,
+    WorkshopComponent,
+    UserSettingsComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyAEkabTXUnuafbGc5GFXG_P3rBhThxyP6U"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,30 @@
-<p>administrator works!</p>
+<div>
+    {{logged.type}}
+</div>
+<span style="text-align: center;">New users:</span>
+<div style="text-align:center" *ngFor="let user of newRequests" class="box">
+   
+    {{user.first_name}} {{user.last_name}}
+    <br>
+    {{user.type}}
+    <br>
+    <img [src] = "user.image" height="200px">
+    <br>
+    <button (click)="accept(user.username)">Accept</button><button (click)="reject(user.username)">Reject</button>
+    <hr>
+</div>
+<hr>
+<span style="text-align: center;">New workshops:</span>
+<div style="text-align:center" *ngFor="let workshop of newWorkshops">
+   
+    {{workshop.title}}
+    <br>
+    {{workshop.shortDescription}}
+    <br>
+  
+    <img src = "../../assets/Images/workshop/{{workshop.images[0]}}" height="200px">
+    <br>
+    <button (click)="acceptWorkshop(workshop._id)">Accept</button><button (click)="rejectWorkshop(workshop._id)">Reject</button>
+    <hr>
+</div>
+

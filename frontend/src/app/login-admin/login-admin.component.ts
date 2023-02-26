@@ -25,6 +25,7 @@ export class LoginAdminComponent implements OnInit {
         this.errorMessage = "All fileds required!"
       } else {
         if (user){
+          sessionStorage.setItem('logged',JSON.stringify(user));
           this.router.navigate(['/administrator'])
         }
         else {

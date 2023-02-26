@@ -1,1 +1,128 @@
-<p>organizer works!</p>
+<!-- <div class="box">
+    <p>organizer works!</p>
+</div> -->
+<div class="conteiner " style="min-height:100vh">
+    <div class="row">
+        <div class="col-2"></div>
+        <div  class="col-8 mt-5 ">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="text-center box">
+                        <h4>New workshop:</h4>
+                        <br>
+                        <select name="template" [(ngModel)]="template">
+                          <option *ngFor="let w of workshopTemplates" [value]="w._id"><i>{{w.title}}</i></option>
+                          <!-- <option value="organizer"><i>Organizer</i></option> -->
+                        </select><br>
+                        <button style="font-size: 12px;" (click)="loadTemplate()" class="btn btn-dark">Load template</button><br>
+                        <input  type="text" name="firstname" placeholder="Title" [(ngModel)]="title"> 
+                        <!-- <span *ngIf="firstnameCheck" class="errorClass"></span><br *ngIf="firstnameCheck"> -->
+                        <input  type="number" name="username" placeholder="Capacity" [(ngModel)]="capacity"><br>
+                        
+                        <!-- <span *ngIf="lastnameCheck" class="errorClass"></span><br *ngIf="lastnameCheck"> -->
+                        <textarea  name="short" rows="1" style="width:80%; max-width: 50ch" placeholder="Short Description" [(ngModel)]="shortDescription"> </textarea><br>
+                        <textarea name="description" rows="4" style="width:80%; max-width: 50ch;" placeholder="Description" [(ngModel)]="description"> </textarea><br>   
+                        <input type="date" name="lastname" [(ngModel)]="date"><br>
+                        <i>Address:</i><br>
+                        <!-- <input type="text" id="street" placeholder="Street" size="30" [(ngModel)]="street"><br>
+                        <input type="text" id="country" placeholder="Country" size="8" [(ngModel)]="country">
+                        <input type="text" id="city" placeholder="City" size="8" [(ngModel)]="city">
+                        <input type="text" id="zip" placeholder="Zip" size="2" [(ngModel)]="zip"><br><br> -->
+                        
+                        <div class="row">
+                          
+                          <div class="col-md-1"></div>
+                          
+                          <div class="col-12 col-md-10 text-center">
+                            <div class="conteinter mx-5 px-5">
+                              <div class="input-group rounded">
+                                <input type="search" class="form-control rounded"  placeholder="Search..." id="search" aria-label="Search" aria-describedby="search-addon" />
+                              </div>
+                            </div>            
+                            <div id="map"></div>
+                            
+                            <span *ngIf="street">{{street}}, {{city}}, {{country}}</span>
+                      
+                            <br>
+                            
+                          </div>
+
+                          <div class="col-md-1"></div>
+
+                        </div>
+                       
+                        
+                        <div class="container py-3" style="width:70%">
+                          <div class="input-group custom-file-button">
+                            <label class="input-group-text" for="inputGroupFile">Choose photos</label>
+                            <input type="file" (change)=onFileSelected(imageInput.files) class="form-control" id="inputGroupFile" multiple="multiple" #imageInput>
+                          </div>                        
+                        </div>
+                        
+                    </div>
+                  
+                    <br>
+                    <div *ngIf="images.length != 0 && !templateImagesFlag" id="carouselExampleIndicators" class="carousel slide text-center" data-bs-ride="true">
+
+                        <div class="carousel-indicators ">
+                          <button *ngFor="let image of images; let i = index" type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}"></button>                        
+                        </div>
+                        <div class="carousel-inner " >
+                      
+                          <div class="carousel-item" *ngFor="let image of images; let i = index" [ngClass]="{'active': i === 0}">
+                            <img [src]="image" alt="...">
+                          </div>
+                        
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span  class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        </div>
+                        <br>
+                        <br>
+                        
+                    </div>
+                    <div *ngIf="templateImagesFlag" id="carouselExampleIndicators" class="carousel slide text-center" data-bs-ride="true">
+
+                      <div class="carousel-indicators ">
+                        <button *ngFor="let path of templateImages; let i = index" type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}"></button>                        
+                      </div>
+                      <div class="carousel-inner " >
+                    
+                        <div class="carousel-item" *ngFor="let path of templateImages; let i = index" [ngClass]="{'active': i === 0}">
+                          <img src="../../assets/Images/workshop/{{path}}" alt="...">
+                        </div>
+                      
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span  class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                      <br>
+                      <br>
+                      
+                  </div>
+                    <div class="text-center" style="background-color: #F5F5F5">
+                       <span *ngIf="errorMessage" class="errorClass"><i class="fa fa-exclamation-circle">&nbsp;</i>{{errorMessage}}</span><br *ngIf="errorMessage"><br>
+                      <button (click)="post()" class="btn btn-dark">Post</button><br><br>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>    
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+
+
+

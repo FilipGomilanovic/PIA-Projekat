@@ -1,0 +1,227 @@
+<!-- <div class="passwordChange"></div> -->
+<div class="conteinter bg-light">
+    <div class="row">
+        <div class="col-sm-12 col-md-2 leftEmptyDiv"></div>
+        <div class="col-sm-12 col-md-8 centerDiv">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 div1">
+                    <div class="row mt-5 mb-5 bg-light">
+                        <div class="col-2 div1_1">
+        
+                        </div>
+                        <div class="col-8 div1_2 bg-light" style="text-align:center">
+                            <img  [src]="photo" alt="image" class="card-img-top" style="margin-bottom: 15px;" >
+                         
+                            <label for="image" class="imageLabel">
+                                Change photo <i class="fa fa-photo"></i>
+                            </label>
+                     
+                            <input type="file" style="visibility:hidden;" id="image" value="image" (change)="changedPhoto($event)">
+                            <br>
+                            <button (click)="changeFlag(0)" class="editButton">Change password <i class="fa fa-edit"></i></button>
+                            <div *ngIf="editPassword">
+                                <input (focusout)="testCurrentPassword()" type="text" name="password" placeholder="Current password" [(ngModel)]="password"><br>
+                                <span *ngIf="currentPasswordCheck" class="errorClass">{{currentPasswordCheck}}</span><br *ngIf="currentPasswordCheck">
+                                <input (focusout)="testPassword()" type="text" name="password1" placeholder="Password" [(ngModel)]="password1"><br>
+                                <input (focusout)="testPassword()" type="text" name="password2" placeholder="Confirm" [(ngModel)]="password2"><br>
+                                <span *ngIf="passwordCheck" class="errorClass">{{passwordCheck}}</span><br *ngIf="passwordCheck">
+                               
+                            </div>
+                        </div>
+                        <div class="col-2 div1_3">
+                            
+                            <!-- <span *ngIf="passwordCheck" class="errorClass">{{passwordCheck}}</span><br *ngIf="passwordCheck"> -->
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="col-sm-12 col-md-6 div2 ">
+                    
+                    <div class="row mt-5 mb-5 ">
+                        <div class="col-1 div1_1">
+        
+                        </div>
+                        <div class="col-10 bg-light text-center">
+                            <table class="table table-light">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3">User info</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><i>Name: </i></td>
+                                        <td *ngIf="!editName">
+                                            {{name}}<br>
+                                            <span *ngIf="nameCheck" class="errorClass">{{nameCheck}}</span><br *ngIf="nameCheck">
+
+                                        </td>
+                                        <td *ngIf="editName">
+                                            <input (focusout)="testName()" style="text-align: center;" type="text" [(ngModel)]="name" [placeholder] =name><br>
+                                            <span *ngIf="nameCheck" class="errorClass">{{nameCheck}}</span><br *ngIf="nameCheck">
+                                        </td>
+                                        <td><button (click)="changeFlag(1)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i>Surname: </i></td>
+                                        <td *ngIf="!editSurname">
+                                            {{surname}}
+                                            <br>
+                                            <span *ngIf="surnameCheck" class="errorClass">{{surnameCheck}}</span><br *ngIf="surnameCheck">
+                                        </td>
+                                        <td *ngIf="editSurname">
+                                            <input (focusout)="testSurname()" style="text-align: center;" type="text" [(ngModel)]="surname" [placeholder] =surname><br>
+                                            <span *ngIf="surnameCheck" class="errorClass">{{surnameCheck}}</span><br *ngIf="surnameCheck">
+                                        </td>
+                                        <td><button (click)="changeFlag(2)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i>Username: </i></td>
+                               
+                                        <td *ngIf="!editUsername">
+                                            {{username}}
+                                            <br>
+                                            <span *ngIf="usernameCheck" class="errorClass">{{usernameCheck}}</span><br *ngIf="usernameCheck">
+                                        </td>
+                                        <td *ngIf="editUsername">
+                                            <input (focusout)="testUsername()" style="text-align: center;" type="text" [(ngModel)]="username" [placeholder] =username><br>
+                                            <span *ngIf="usernameCheck" class="errorClass">{{usernameCheck}}</span><br *ngIf="usernameCheck">
+                                        </td>
+                                        <td><button (click)="changeFlag(3)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i>Email: </i></td>
+                     
+                                        <td *ngIf="!editEmail">
+                                            {{email}}
+                                            <br>
+                                            <span *ngIf="emailCheck" class="errorClass">{{emailCheck}}</span><br *ngIf="emailCheck">
+
+                                        </td>
+                                        <td *ngIf="editEmail">
+                                            <input (focusout)="testEmail()" style="text-align: center;" type="text" [(ngModel)]="email" [placeholder] =email><br>
+                                            <span *ngIf="emailCheck" class="errorClass">{{emailCheck}}</span><br *ngIf="emailCheck">
+                                        </td>
+                                        <td><button (click)="changeFlag(4)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i>Phone:  </i></td>
+                                     
+                                        <td *ngIf="!editPhone">
+                                            {{phone}}
+                                            <br>
+                                            <span *ngIf="phoneCheck" class="errorClass">{{phoneCheck}}</span><br *ngIf="phoneCheck">
+                                        </td>
+                                        <td *ngIf="editPhone">
+                                            <input (focusout)="testPhone()" style="text-align: center;" type="text" [(ngModel)]="phone" [placeholder] =phone><br>
+                                            <span *ngIf="phoneCheck" class="errorClass">{{phoneCheck}}</span><br *ngIf="phoneCheck">
+                                        </td>
+                                        <td><button (click)="changeFlag(5)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                                    </tr>
+                                    <tr *ngIf="logged.type=='organizer'">
+                                        <th colspan="3">Organization</th>
+                                    </tr>
+                                    <tr *ngIf="logged.type=='organizer'">
+                                        <td><i>Name: </i></td>
+                            
+                                        <td *ngIf="!editOName">{{oName}}</td>
+                                        <td *ngIf="editOName"><input style="text-align: center;" type="text" [(ngModel)]="oName" [placeholder] =oName></td>
+                                        <td><button (click)="changeFlag(6)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                                    </tr>
+                                    <tr *ngIf="logged.type=='organizer'">
+                                        <td><i>ID: </i></td>
+                                   
+                                        <td *ngIf="!editOID">{{oID}}</td>
+                                        <td *ngIf="editOID"><input style="text-align: center;" type="text" [(ngModel)]="oID" [placeholder] =oID></td>
+                                        <td><button (click)="changeFlag(7)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                                    </tr>
+                                    <tr *ngIf="logged.type=='organizer'">
+                                        <td><i>Address: </i></td>
+                                        <td *ngIf="!editOAddress">{{oStreet}}, {{oCity}} {{oZip}}, {{oCountry}}</td>
+                                        <td *ngIf="editOAddress">
+                                            <input style="text-align: center;" type="text" [(ngModel)]="oStreet" [placeholder] =oStreet>
+                                            <input style="text-align: center;" type="text" [(ngModel)]="oCity" [placeholder] =oCity>
+                                            <input style="text-align: center;" type="text" [(ngModel)]="oZip" [placeholder] =oZip>
+                                            <input style="text-align: center;" type="text" [(ngModel)]="oCountry" [placeholder] =oCountry>
+                                        </td>
+                                        <td><button (click)="changeFlag(8)" class="editButton"><i class="fa fa-edit"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>  
+                            <br>
+                            <button (click)="saveChanges()" *ngIf="changedSomething" class="btn btn-dark">Save changes <i class="fa fa-edit"></i></button>
+                            <button  *ngIf="!changedSomething" disabled class="btn btn-dark">Save changes <i class="fa fa-edit"></i></button>
+                            <br>
+                            <span *ngIf="buttonCheck" class="errorClass">{{buttonCheck}}</span><br *ngIf="buttonCheck">
+                            <br>
+
+                            <table class="table table-light">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Workshops where you are currently registered:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor=" let curr of currentlyWorkshops">
+                                        
+                                        <td>
+                                            <button (click)="workshopProfile(curr)" class="buttonLink">{{curr.title}}</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>  
+
+
+                        </div>
+                        <div class="col-1 div1_1">
+        
+                        </div>
+                    </div>   
+                </div>
+                <button class="editButton" (click)="showUserInt()">Show user interactions</button>
+            </div>
+            
+            <hr>     
+        </div>
+        <div class="col-sm-12 col-md-2 rightEmptyDiv"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-2 leftEmptyDiv"></div>
+        <div class="col-sm-12 col-md-8 centerDiv text-center">
+            <div class="row" *ngIf="showUserInteractions">
+                <div class="col-4">               
+                    <table style="margin: auto;">
+                        <th style="text-align: center;">Atended workshops:</th>
+                        <tr *ngFor="let workshop of atendedWorkshops" style="text-align: center;">
+                            <button (click)="workshopProfile(workshop)" class="buttonLink">{{workshop.title}}</button>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-4">
+                 
+                    <table style="margin: auto">
+                        <th style="text-align: center;">Liked workshops:</th>
+                        <tr *ngFor="let workshop of likedWorkshops" style="text-align: center;">
+                            <button (click)="workshopProfile(workshop)" class="buttonLink">{{workshop.title}}</button>
+                        </tr>             
+                    </table>
+                </div>
+                <div class="col-4">
+                   
+                    <table style="margin: auto">
+                        <th style="text-align: center;">Comented workshops:</th>
+                        <tr *ngFor="let workshop of commentedWorkshops" style="text-align: center;">
+                            <button (click)="workshopProfile(workshop)" class="buttonLink">{{workshop.title}}</button>
+                        </tr>             
+                    </table>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-sm-12 col-md-2 rightEmptyDiv"></div>
+    </div>
+
+    <div class="col-sm-12 col-md-2 rightEmptyDiv"></div>
+</div>
+

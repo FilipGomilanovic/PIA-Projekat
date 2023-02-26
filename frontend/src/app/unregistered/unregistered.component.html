@@ -1,3 +1,400 @@
-<p>Uneristered user!</p>
-<hr>
-<button (click)="navigateLogin()">Login</button>
+<div class="conteiner " style="min-height:100vh; background-color: #F5F5F5" >
+
+  <section class="pt-5 pb-5">
+    <div class="container">
+        <div *ngIf="workshopsTop5.length>0" class="row">
+            <div class="col-6">
+                <h3 class="mb-3">Top 5</h3>
+            </div>
+            
+            <div  class="col-12">
+                <div  id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div *ngIf="workshopsTop5[0]" class="carousel-item active">
+                            <div class="row">
+                              <div class="col-md-4 mb-3">
+                                <div class="card text-center">
+                                  <img src="../../assets/Images/workshop/{{workshopsTop5[0].images[0]}}" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">{{workshopsTop5[0].title}}</h5>
+                                    <p class="card-text cardBody">
+                                      {{workshopsTop5[0].shortDescription}}<br>
+                                      {{workshopsTop5[0].date}}<br>
+                                      {{workshopsTop5[0].street}}, {{workshopsTop5[0].city}}, {{workshopsTop5[0].country}}<br>
+                                     
+                                      <button (click)="showProfile(workshopsTop5[0].organizer)" class="buttonLink"><span class="fa fa-id-card" >{{workshopsTop5[0].organizer}}</span></button>
+                                      <br>
+                                      <button (click)="workshopProfile(workshopsTop5[0])" class="buttonLink">details</button>
+                                    </p>  
+                                    
+                                         
+                                  </div>
+                                  <hr>
+                                  <div class="card-body" style="margin-top:-20px">
+                                    <button (click)="workshopProfile(workshopsTop5[0])" class="buttonLikesComments">
+                                    <span  style="color:red" class="fa fa-heart-o"></span>
+                                    &nbsp;{{workshopsTop5[0].numberOfLikes}}</button>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <button (click)="workshopProfile(workshopsTop5[0])" class="buttonLikesComments" >
+                                    <span style="color:blue" class="fa fa-comment-o"></span>
+                                    &nbsp;{{workshopsTop5[0].comments.length}}</button>
+                                    <br>
+                                  </div>
+  
+                                </div>
+                            </div>
+                              <div *ngIf="workshopsTop5[1]" class="col-md-4 mb-3">
+                                <div class="card text-center">
+                                  <img src="../../assets/Images/workshop/{{workshopsTop5[1].images[0]}}" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">{{workshopsTop5[1].title}}</h5>
+                                    <p class="card-text cardBody">
+                                      {{workshopsTop5[1].shortDescription}}<br>
+                                      {{workshopsTop5[1].date}}<br>
+                                      {{workshopsTop5[1].street}}, {{workshopsTop5[1].city}}, {{workshopsTop5[1].country}}<br>
+                                      <button (click)="showProfile(workshopsTop5[1].organizer)" class="buttonLink"><span class="fa fa-id-card" >{{workshopsTop5[1].organizer}}</span></button>
+                                      <br>
+                                      <button (click)="workshopProfile(workshopsTop5[1])" class="buttonLink">details</button>
+                                    </p>        
+                                  </div>
+                                  <hr>
+                                  <div class="card-body" style="margin-top:-20px">
+                                    <button (click)="workshopProfile(workshopsTop5[1])" class="buttonLikesComments">
+                                    <span  style="color:red" class="fa fa-heart-o"></span>
+                                    &nbsp;{{workshopsTop5[1].numberOfLikes}}</button>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <button (click)="workshopProfile(workshopsTop5[1])" class="buttonLikesComments" >
+                                    <span style="color:blue" class="fa fa-comment-o"></span>
+                                    &nbsp;{{workshopsTop5[1].comments.length}}</button>
+                                    <br>
+                                  </div>
+
+                                </div>
+                            </div>
+                            
+                          <div *ngIf="workshopsTop5[2]" class="col-md-4 mb-3">
+                            <div class="card text-center">
+                              <img src="../../assets/Images/workshop/{{workshopsTop5[2].images[0]}}" class="card-img-top" alt="...">
+                              <div class="card-body ">
+                                <h5 class="card-title">{{workshopsTop5[2].title}}</h5>
+                                <p class="card-text cardBody">
+                                  {{workshopsTop5[2].shortDescription}}<br>
+                                  {{workshopsTop5[2].date}}<br>
+                                  {{workshopsTop5[2].street}}, {{workshopsTop5[2].city}}, {{workshopsTop5[2].country}}<br>
+                                  <button (click)="showProfile(workshopsTop5[2].organizer)" class="buttonLink"><span class="fa fa-id-card" >{{workshopsTop5[2].organizer}}</span></button>
+                                  <br>
+                                  <button (click)="workshopProfile(workshopsTop5[2])" class="buttonLink">details</button>
+                                </p>        
+                              </div>
+                              <hr>
+                              <div class="card-body" style="margin-top:-20px">
+                                <button (click)="workshopProfile(workshopsTop5[2])" class="buttonLikesComments">
+                                <span  style="color:red" class="fa fa-heart-o"></span>
+                                &nbsp;{{workshopsTop5[2].numberOfLikes}}</button>
+                                &nbsp;&nbsp;&nbsp;
+                                <button (click)="workshopProfile(workshopsTop5[2])" class="buttonLikesComments" >
+                                <span style="color:blue" class="fa fa-comment-o"></span>
+                                &nbsp;{{workshopsTop5[2].comments.length}}</button>
+                                <br>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div *ngIf="workshopsTop5[3]" class="col-md-4 mb-3">
+                                    <div class="card text-center">
+                                      <img src="../../assets/Images/workshop/{{workshopsTop5[3].images[0]}}" class="card-img-top" alt="...">
+                                      <div class="card-body">
+                                        <h5 class="card-title">{{workshopsTop5[3].title}}</h5>
+                                        <p class="card-text cardBody">
+                                          {{workshopsTop5[3].shortDescription}}<br>
+                                          {{workshopsTop5[3].date}}<br>
+                                          {{workshopsTop5[3].street}}, {{workshopsTop5[3].city}}, {{workshopsTop5[3].country}}<br>
+                                          <button (click)="showProfile(workshopsTop5[3].organizer)" class="buttonLink"><span class="fa fa-id-card" >{{workshopsTop5[3].organizer}}</span></button>
+                                          <br>
+                                          <button (click)="workshopProfile(workshopsTop5[3])" class="buttonLink">details</button>
+                                        </p>        
+                                      </div>
+                                      <hr>
+                                      <div class="card-body" style="margin-top:-20px">
+                                        <button (click)="workshopProfile(workshopsTop5[3])"class="buttonLikesComments">
+                                        <span  style="color:red" class="fa fa-heart-o"></span>
+                                        &nbsp;{{workshopsTop5[3].numberOfLikes}}</button>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <button (click)="workshopProfile(workshopsTop5[3])" class="buttonLikesComments" >
+                                        <span style="color:blue" class="fa fa-comment-o"></span>
+                                        &nbsp;{{workshopsTop5[3].comments.length}}</button>
+                                        <br>
+                                      </div>
+
+                                    </div>
+                                </div>
+                                <div *ngIf="workshopsTop5[4]" class="col-md-4 mb-3">
+                                  <div class="card text-center">
+                                    <img src="../../assets/Images/workshop/{{workshopsTop5[4].images[0]}}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title">{{workshopsTop5[4].title}}</h5>
+                                      <p class="card-text cardBody">
+                                        {{workshopsTop5[4].shortDescription}}<br>
+                                        {{workshopsTop5[4].date}}<br>
+                                        {{workshopsTop5[4].street}}, {{workshopsTop5[4].city}}, {{workshopsTop5[4].country}}<br>
+                                        <button (click)="showProfile(workshopsTop5[4].organizer)" class="buttonLink"><span class="fa fa-id-card" >{{workshopsTop5[4].organizer}}</span></button>
+                                        <br>
+                                        <button (click)="workshopProfile(workshopsTop5[4])" class="buttonLink">details</button>
+                                      </p>        
+                                    </div>
+                                    <hr>
+                                    <div class="card-body" style="margin-top:-20px">
+                                      <button (click)="workshopProfile(workshopsTop5[4])" class="buttonLikesComments">
+                                      <span  style="color:red" class="fa fa-heart-o"></span>
+                                      &nbsp;{{workshopsTop5[4].numberOfLikes}}</button>
+                                      &nbsp;&nbsp;&nbsp;
+                                      <button (click)="workshopProfile(workshopsTop5[4])" class="buttonLikesComments" >
+                                      <span style="color:blue" class="fa fa-comment-o"></span>
+                                      &nbsp;{{workshopsTop5[4].comments.length}}</button>
+                                      <br>
+                                    </div>
+
+                                  </div>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button> -->
+                </div>
+                <div class="col-12 text-center">
+                  <div *ngIf="showAlert" class="row">
+                    <div class="col-3"></div>
+                    <div class="col-6">
+                      <div class="alert alert-warning alert-dismissible">
+                        <button (click)="closeAlert()" type="button" class="btn-close" aria-label="close"></button>
+                        You must <a class="alert-link" href="/login"><strong>sign in</strong></a> to see more info
+                      </div>
+                    </div>
+                    <div class="col-3"></div>
+                  </div>
+                  
+                  <button class="btn btn-dark mb-3 " style="margin-right:5px" href="#carouselExampleIndicators2" role="button" data-bs-slide="prev">
+                      <i class="fa fa-arrow-left"></i>
+                  </button>
+                  <button class="btn btn-dark mb-3 " style="margin-left:5px"  href="#carouselExampleIndicators2" role="button" data-bs-slide="next">
+                      <i class="fa fa-arrow-right"></i>
+                  </button>
+              </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+    <div class="row">
+      
+        
+        <div class="col-2"></div>
+        <div  class="col-8 mt-3 ">
+            
+            
+                <div class="container">
+                     <div class="search">
+                         <div class="row">
+                             <div class="col-6"> 
+                                <div class="search-1">
+                                     <i class='bx bx-search-alt'></i>
+                                      <input type="text" placeholder="Title" [(ngModel)]="searchTitle">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div>
+                                    <div class="search-2">
+                                        <i class='bx bxs-map' ></i> 
+                                        <input type="text" placeholder="Street/City/Country" [(ngModel)]="searchLocation">
+                                        <button (click)="search()" class="btn btn-dark">Search</button> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                
+                <div class="col-2"></div>
+                <div class="col-8 text-center mt-5">
+                  <select name='sort' [(ngModel)]='sort'>
+                    <option value="sortTitleAscending">
+                     <i>Sort by Title Ascending</i>
+                    </option>
+                    <option value="sortTitleDescending">
+                      <i>Sort by Title Descending</i>
+                     </option>
+                    <option value="sortDateAscending">
+                      <i>Sort by Date Ascending</i>
+                    </option>
+                    <option value="sortDateDescending">
+                      <i>Sort by Date Descending</i>
+                    </option>
+                  </select>
+                  <br><br>
+                  <button (click)="sortWorkshops()" class="btn btn-dark"><i>Sort</i></button>
+                  <br><br>
+                   <!-- <div *ngFor="let workshop of workshops; let y = index" class="workshop">
+                    
+                  
+                    <div id={{ids[y]}} class="carousel slide text-center" data-bs-ride="true">
+
+                        <div class="carousel-indicators ">
+                          <button *ngFor="let image of workshop.images; let i = index" type="button" [attr.data-bs-target]="'#' + ids[y]" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}">
+                          </button>                        
+                        </div>
+                        <div class="carousel-inner" >
+                      
+                          <div class="carousel-item" *ngFor="let image of workshop.images; let i = index" [ngClass]="{'active': i === 0}">
+                            <img src="../../assets/Images/workshop/{{image}}" alt="image">
+
+                          </div>
+                        
+                          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#'+ ids[y]" data-bs-slide="prev">
+                            <span  class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#'+ ids[y]" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button> 
+                          
+                        </div>
+                        <br>
+                        <br>
+                      
+                        
+                    </div>    -->
+                    
+                    <div *ngFor="let workshop of workshops; let i = index" class="text-center">
+                    <div class="card">
+                      <img src="../../assets/Images/workshop/{{workshop.images[0]}}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{workshop.title}}</h5>
+                        <p class="card-text">{{workshop.shortDescription}}</p>
+                        <p class="card-title">
+                          {{workshop.date}}<br>
+                          {{workshop.street}}, {{workshop.city}}, {{workshop.country}}
+                        </p>
+                        <button (click)="showProfile2(workshop.organizer, i)" class="buttonLink"><span class="fa fa-id-card" >{{workshop.organizer}}</span></button>
+                        <br>
+                        <button (click)="workshopProfile2(workshop, i)" class="buttonLink">details</button>
+                      
+                        <div *ngIf="alerts[i]" class="row">
+                          <div class="col-2"></div>
+                          <div class="col-8">
+                            <div class="alert alert-warning alert-dismissible">
+                              <button (click)="closeAlert2(i)" type="button" class="btn-close" aria-label="close"></button>
+                              You must <a class="alert-link" href="/login"><strong>sign in</strong></a> to see more info
+                            </div>
+                          </div>
+                          <div class="col-2"></div>
+                        </div>
+                       
+                        
+                      </div>
+                      <hr>
+                      <div class="card-body" style="margin-top:-20px">
+                        <button (click)="workshopProfile2(workshop, i)" class="buttonLikesComments">
+                        <span  style="color:red" class="fa fa-heart-o"></span>
+                        &nbsp;{{workshop.numberOfLikes}}</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button (click)="workshopProfile2(workshop, i)" class="buttonLikesComments" >
+                        <span style="color:blue" class="fa fa-comment-o"></span>
+                        &nbsp;{{workshop.comments.length}}</button>
+                        <br>
+                      </div>
+                      <!-- <div class="card-body">
+                        <span  style="color:red" class="fa fa-heart-o"></span>
+                        <a class="likesComents" href="#">&nbsp;{{workshop.numberOfLikes}}</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:blue" class="fa fa-comment-o"></span>
+                        <a class="likesComents" href="#">&nbsp;{{workshop.numberOfLikes}}</a>
+                      </div>
+                      <div class="card-body" style="text-align:start">
+                        <h5 class="card-title">{{workshop.title}}</h5>
+                        <p class="card-text">{{workshop.shortDescription}}</p>
+                        <p class="card-title">
+                          {{workshop.date}}<br>
+                          {{workshop.street}}, {{workshop.city}}, {{workshop.country}}
+                        </p>
+                        <a href="#" class="card-text"><span class="fa fa-id-card" >	{{workshop.organizer}}</span></a>
+                        <div class="card-text">
+                          
+                          <a href="#" class="btn btn-link">details</a>
+                        </div> -->
+                       
+                        
+                        <br>
+                      
+                     
+                    </div>
+                    <br><br>
+                    
+                  </div>
+                
+                     
+                    
+                    <!-- <hr> -->
+                   
+                   <!-- <div id={{ids[0]}} class="carousel slide text-center" data-bs-ride="true">
+                    <div class="carousel-indicators ">
+                      <button *ngFor="let image of workshops[0].images; let i = index" type="button" [attr.data-bs-target] = "'#' + ids[0]" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}">
+                      </button>                        
+                    </div>
+                    <div class="carousel-inner " >
+                  
+                      <div class="carousel-item" *ngFor="let image of workshops[0].images; let i = index" [ngClass]="{'active': i === 0}">
+                        <img src="../../assets/Images/workshop/{{image}}" alt="image">
+                      </div>
+                    
+                   
+                    </div>
+                    <br>
+                    <br>
+                    
+                </div> 
+                <div id={{ids[1]}} class="carousel slide text-center" data-bs-ride="true">
+
+                    <div class="carousel-indicators ">
+                      <button *ngFor="let image of workshops[1].images; let i = index" type="button" [attr.data-bs-target]="'#' + ids[1]" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}">
+                      </button>                        
+                    </div>
+                    <div class="carousel-inner " >
+                  
+                      <div class="carousel-item" *ngFor="let image of workshops[1].images; let i = index" [ngClass]="{'active': i === 0}">
+                        <img src="../../assets/Images/workshop/{{image}}" alt="image">
+                      </div>
+                    
+
+                    </div>
+                    <br>
+                    <br>
+                    
+                </div>  -->
+                <div *ngIf="noWorkshopsMessage">
+                  <h2 >{{noWorkshopsMessage}}</h2>
+                  <br>
+                  <br>
+                </div>
+                </div>
+                <div class="col-2"></div>
+            </div>    
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

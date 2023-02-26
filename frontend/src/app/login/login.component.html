@@ -9,8 +9,12 @@
         <option value="organizer"><i>Organizer</i></option>
     </select><br>
     <span class="errorClass">{{errorMessage}}</span><br>
-    <button (click)="login()">Login</button><br>
-
+    <button (click)="login()" class="btn btn-dark">Login</button><br>
+    <button (click)="testEmail()" class="buttonLink">Forgot password?</button><br>
+    <div *ngIf="changePassword">
+        <input type="text" name="email" [(ngModel)]="email" placeholder="Enter your email"><br>
+        <button (click)="sendEmail()" class="btn btn-success">Send</button>
+    </div>
     <span>
         Don't have an account? Register
         <a routerLink='/register'> here.</a>
