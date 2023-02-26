@@ -42,7 +42,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     HttpClientModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyAEkabTXUnuafbGc5GFXG_P3rBhThxyP6U"
+      apiKey: "YourKey"
     })
   ],
   providers: [],
